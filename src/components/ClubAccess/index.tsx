@@ -15,6 +15,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
+import { colors } from "../../theme/colors";
 import {
   useDashboard,
   TENANTS,
@@ -26,15 +27,16 @@ import {
   headerText,
   headerRow,
   headerActions,
+  addMemberButton,
   tabsWrapper,
   tabsPaper,
   tabs,
   tab,
   searchField,
-  searchIcon,
   contentPaper,
   tablePaper,
   tableContainer,
+  tableHeaderRow,
   tableRow,
   statusChip,
 } from "./styles";
@@ -77,7 +79,7 @@ export function ClubAccess() {
 
         <Box sx={headerActions}>
           <ConnectionStatusIndicator />
-          <Button variant="contained" onClick={() => setAddMemberOpen(true)}>
+          <Button variant="contained" onClick={() => setAddMemberOpen(true)} sx={addMemberButton}>
             ADD MEMBER
           </Button>
         </Box>
@@ -107,7 +109,7 @@ export function ClubAccess() {
           </Paper>
           <Box
             sx={{
-              background: "linear-gradient(-90deg, #DDEBEF 0%, #FFFFFF 100%)",
+              background: `linear-gradient(-90deg, ${colors.gradientLight} 0%, ${colors.white} 100%)`,
               width: "100%",
               height: "30px",
             }}
@@ -119,68 +121,69 @@ export function ClubAccess() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           sx={searchField}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Box
-                  component="img"
-                  src="/assets/search.png"
-                  alt=""
-                  sx={searchIcon}
-                />
-              </InputAdornment>
-            ),
-          }}
+        //InputProps={{
+        //  startAdornment: (
+        //    <InputAdornment position="start">
+        //      <Box
+        //        component="img"
+        //        src="/assets/search.png"
+        //        alt=""
+        //        sx={searchIcon}
+        //      />
+        //    </InputAdornment>
+        //  ),
+        //}}
         />
-      </Paper>
-      {/* <Paper sx={tablePaper}>
-        <TableContainer sx={tableContainer}>
-          <Table stickyHeader size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  <TableSortLabel>MEMBER#</TableSortLabel>
-                </TableCell>
-                <TableCell>
-                  <TableSortLabel>MEMBER</TableSortLabel>
-                </TableCell>
-                <TableCell>
-                  <TableSortLabel>FACILITY</TableSortLabel>
-                </TableCell>
-                <TableCell>
-                  <TableSortLabel>STATUS</TableSortLabel>
-                </TableCell>
-                <TableCell>
-                  <TableSortLabel>TIME</TableSortLabel>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredCheckIns.map((row) => (
-                <TableRow
-                  key={row.eventId}
-                  hover
-                  onClick={() => fetchMemberProfile(row.memberId)}
-                  sx={tableRow}
-                >
-                  <TableCell>{row.memberId}</TableCell>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.facility}</TableCell>
+
+        <Paper sx={tablePaper}>
+          <TableContainer sx={tableContainer}>
+            <Table stickyHeader size="small">
+              <TableHead>
+                <TableRow sx={tableHeaderRow}>
                   <TableCell>
-                    <Chip
-                      label={row.status}
-                      size="small"
-                      color={row.status === "ACTIVE" ? "success" : "error"}
-                      sx={statusChip}
-                    />
+                    <TableSortLabel>MEMBER#</TableSortLabel>
                   </TableCell>
-                  <TableCell>{row.timestamp}</TableCell>
+                  <TableCell>
+                    <TableSortLabel>MEMBER</TableSortLabel>
+                  </TableCell>
+                  <TableCell>
+                    <TableSortLabel>FACILITY</TableSortLabel>
+                  </TableCell>
+                  <TableCell>
+                    <TableSortLabel>STATUS</TableSortLabel>
+                  </TableCell>
+                  <TableCell>
+                    <TableSortLabel>TIME</TableSortLabel>
+                  </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper> */}
+              </TableHead>
+              <TableBody>
+                {filteredCheckIns.map((row, index) => (
+                  <TableRow
+                    key={row.eventId}
+                    hover
+                    onClick={() => fetchMemberProfile(row.memberId)}
+                    sx={tableRow(index)}
+                  >
+                    <TableCell>{row.memberId}</TableCell>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.facility}</TableCell>
+                    <TableCell>
+                      <Chip
+                        label={row.status}
+                        size="small"
+                        color={row.status === "ACTIVE" ? "success" : "error"}
+                        sx={statusChip}
+                      />
+                    </TableCell>
+                    <TableCell>{row.timestamp}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </Paper>
     </Box>
   );
 }

@@ -1,4 +1,5 @@
 import type { SxProps, Theme } from '@mui/material/styles';
+import { colors } from '../../theme/colors';
 
 export const FACILITIES = ['Lounge', 'Gym', 'Pool', 'Spa', 'Restaurant'];
 
@@ -9,10 +10,10 @@ export const modalBox: SxProps<Theme> = {
 	transform: 'translate(-50%, -50%)',
 	width: '50%',
 	maxWidth: 560,
-	backgroundColor: '#FFFFFF',
-	border: '1px solid #DBDBDB',
+	backgroundColor: colors.white,
+	border: `1px solid ${colors.borderGray}`,
 	borderRadius: '24px',
-	boxShadow: '0px 1px 20px #00000026',
+	boxShadow: `0px 1px 20px ${colors.shadow}`,
 	boxSizing: 'border-box',
 	overflow: 'hidden',
 	display: 'flex',
@@ -21,7 +22,7 @@ export const modalBox: SxProps<Theme> = {
 };
 
 export const headerBox: SxProps<Theme> = {
-	borderBottom: '1px solid #DBDBDB',
+	borderBottom: `1px solid ${colors.borderGray}`,
 	padding: '20px 32px',
 };
 
@@ -32,7 +33,7 @@ export const heading: SxProps<Theme> = {
 	fontWeight: 600,
 	fontSize: '20px',
 	textTransform: 'uppercase',
-	color: '#356DAD',
+	color: colors.blue,
 	lineHeight: '100%',
 	letterSpacing: '3px',
 };
@@ -50,7 +51,7 @@ export const formBox: SxProps<Theme> = {
 export const inputLabel: SxProps<Theme> = {
 	fontFamily: 'Poppins, sans-serif',
 	textTransform: 'uppercase',
-	color: '#42566C',
+	color: colors.textMuted,
 	fontWeight: 600,
 	width: '100%',
 	fontSize: '14px',
@@ -59,7 +60,7 @@ export const inputLabel: SxProps<Theme> = {
 
 export const requiredAsterisk: SxProps<Theme> = {
 	fontSize: '14px',
-	color: '#FF0505',
+	color: colors.errorRed,
 	fontWeight: 700,
 };
 
@@ -70,7 +71,7 @@ export const formControl: SxProps<Theme> = {
 };
 
 export const footerBox: SxProps<Theme> = {
-	borderTop: '1px solid #DBDBDB',
+	borderTop: `1px solid ${colors.borderGray}`,
 	padding: '12px 32px',
 	gap: '12px',
 	width: '100%',
@@ -81,13 +82,13 @@ export const footerBox: SxProps<Theme> = {
 export const cancelButton: SxProps<Theme> = {
 	width: 96,
 	height: 40,
-	backgroundColor: '#FFFFFF',
-	border: '1px solid #356DAD',
-	color: '#356DAD',
+	backgroundColor: colors.white,
+	border: `1px solid ${colors.blue}`,
+	color: colors.blue,
 	'&:hover': {
-		backgroundColor: '#fffbfb',
-		border: '1px solid #356DAD',
-		color: '#356DAD',
+		backgroundColor: colors.hoverFb,
+		border: `1px solid ${colors.blue}`,
+		color: colors.blue,
 	},
 };
 
@@ -102,5 +103,5 @@ export const errorText: SxProps<Theme> = {
 };
 
 export const selectPlaceholder: SxProps<Theme> = {
-	color: '#9e9e9e',
+	color: colors.placeholder,
 };

@@ -1,11 +1,10 @@
 import type { SxProps, Theme } from '@mui/material/styles';
+import { colors } from '../../theme/colors';
 
 export const EXPANDED_WIDTH = 240;
 export const COLLAPSED_WIDTH = 72;
-export const ACCENT = '#42a5f5';
-export const SIDEBAR_MUTED = 'rgba(255,255,255,0.5)';
 export const LOGO_WIDTH = 317.8;
-export const LOGO_HEIGHT = 84;
+export const LOGO_HEIGHT = 90;
 
 export const setupItems = [
 	'Event Setup',
@@ -22,13 +21,20 @@ export const configItems = [
 	{ label: 'Score Penalty Defs', active: false },
 ];
 
-export const root = (open: boolean): SxProps<Theme> => ({
+export const sidebarWrapper = (open: boolean): SxProps<Theme> => ({
 	position: 'relative',
 	width: open ? EXPANDED_WIDTH : COLLAPSED_WIDTH,
 	flexShrink: 0,
+	transition: 'width 0.3s ease-in-out',
+	p: 0, m: 0
+	//outline: '2px solid red',
+});
+
+export const root = (open: boolean): SxProps<Theme> => ({
+	width: '100%',
 	minHeight: '100vh',
-	background: 'linear-gradient(180deg, #356DAD 0%, #1D518D 100%)',
-	color: 'white',
+	background: `linear-gradient(180deg, ${colors.blue} 0%, ${colors.blueDark} 100%)`,
+	color: colors.white,
 	display: 'flex',
 	flexDirection: 'column',
 	borderRadius: '0 16px 16px 0',
@@ -40,33 +46,28 @@ export const root = (open: boolean): SxProps<Theme> => ({
 	pt: 0,
 	mt: 0,
 	boxSizing: 'border-box',
+	p: 0, m: 0
 });
 
 export const logoArea: SxProps<Theme> = {
 	width: '100%',
 	height: LOGO_HEIGHT,
 	minHeight: LOGO_HEIGHT,
-	display: 'flex',
-	alignItems: 'flex-start',
+	//display: 'flex',
+	position: 'absolute',
+	top: -20,
+	alignItems: 'center',
 	justifyContent: 'center',
-	p: 0,
-	m: 0,
-	pt: 0,
-	mt: 0,
-	borderBottom: '1px solid rgba(255,255,255,0.1)',
-	flexShrink: 0,
-	overflow: 'hidden',
+	borderBottom: `1px solid ${colors.sidebarBorder}`,
 	boxSizing: 'border-box',
+	p: 0, m: 0
 };
 
 export const logoImage = (open: boolean): SxProps<Theme> => ({
-	width: '100%',
 	maxWidth: open ? LOGO_WIDTH : COLLAPSED_WIDTH,
 	height: LOGO_HEIGHT,
-	flexShrink: 0,
 	objectFit: 'contain',
 	display: 'block',
-	verticalAlign: 'top',
 });
 
 export const toggleButton: SxProps<Theme> = {
@@ -74,13 +75,13 @@ export const toggleButton: SxProps<Theme> = {
 	right: 0,
 	top: LOGO_HEIGHT,
 	transform: 'translateX(50%)',
-	width: 16,
-	height: 40,
-	borderRadius: '0 6px 6px 0',
-	bgcolor: 'white',
-	boxShadow: 2,
+	width: 35,
+	height: 50,
+	borderRadius: '40px',
+	bgcolor: colors.blue,
+	//boxShadow: 2,
 	zIndex: 10,
-	'&:hover': { bgcolor: 'grey.100' },
+	'&:hover': { bgcolor: colors.blue },
 	'& .MuiSvgIcon-root': { fontSize: 16, color: 'grey.700' },
 };
 
@@ -90,6 +91,7 @@ export const navList: SxProps<Theme> = {
 	px: 1.5,
 	overflow: 'auto',
 	fontFamily: 'Poppins, sans-serif',
+	marginTop: 10,
 };
 
 export const navGroup: SxProps<Theme> = {
@@ -116,7 +118,7 @@ export const navGroupTitle: SxProps<Theme> = {
 	fontWeight: 600,
 	fontSize: 16,
 	letterSpacing: '0.05em',
-	color: SIDEBAR_MUTED,
+	color: colors.sidebarMuted,
 };
 
 export const navItemButton: SxProps<Theme> = {
@@ -128,7 +130,7 @@ export const navItemDot: SxProps<Theme> = {
 	width: 8,
 	height: 8,
 	borderRadius: '50%',
-	bgcolor: SIDEBAR_MUTED,
+	bgcolor: colors.sidebarMuted,
 	mr: 1.5,
 };
 
@@ -143,8 +145,8 @@ export const navItemSelected = (active: boolean): SxProps<Theme> => ({
 	borderRadius: 1,
 	position: 'relative',
 	'&.Mui-selected': {
-		bgcolor: 'rgba(255,255,255,0.08)',
-		color: 'white',
+		bgcolor: colors.navSelectedBg,
+		color: colors.white,
 		'&::before': {
 			content: '""',
 			position: 'absolute',
@@ -152,7 +154,7 @@ export const navItemSelected = (active: boolean): SxProps<Theme> => ({
 			top: 0,
 			bottom: 0,
 			width: 3,
-			bgcolor: ACCENT,
+			bgcolor: colors.accent,
 			borderRadius: '0 2px 2px 0',
 		},
 	},
@@ -162,7 +164,7 @@ export const navItemDotActive = (active: boolean): SxProps<Theme> => ({
 	width: 8,
 	height: 8,
 	borderRadius: '50%',
-	bgcolor: active ? ACCENT : SIDEBAR_MUTED,
+	bgcolor: active ? colors.accent : colors.sidebarMuted,
 	mr: 1.5,
 });
 
@@ -181,7 +183,7 @@ export const navItemCollapsedIcon: SxProps<Theme> = {
 export const navItemCollapsedActive: SxProps<Theme> = {
 	justifyContent: 'center',
 	py: 1.5,
-	bgcolor: 'rgba(66, 165, 245, 0.2)',
+	bgcolor: colors.accentLight,
 	borderRadius: 1,
 	mx: 0.5,
 };
@@ -203,7 +205,7 @@ export const bottomArea = (open: boolean): SxProps<Theme> => ({
 	justifyContent: open ? 'flex-start' : 'center',
 	px: open ? 2 : 0,
 	py: 1,
-	borderTop: '1px solid rgba(255,255,255,0.1)',
+	borderTop: `1px solid ${colors.sidebarBorder}`,
 	flexShrink: 0,
 });
 

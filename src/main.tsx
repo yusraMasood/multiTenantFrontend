@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom/client';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import App from './App';
+import { colors } from './theme/colors';
 
 const theme = createTheme({
   typography: {
     fontFamily: '"Poppins", sans-serif',
   },
   palette: {
-    primary: { main: '#1976d2' },
-    background: { default: '#f5f5f5', paper: '#ffffff' },
+    primary: { main: colors.primary },
+    background: { default: colors.backgroundDefault, paper: colors.white },
   },
 });
 

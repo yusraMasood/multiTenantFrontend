@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
-import Close from '@mui/icons-material/Close';
 import { useDashboard } from '../../context/DashboardContext';
 import { paper, titleBar, content, section, recentSection, recentList, recentItem } from './styles';
 
@@ -25,7 +24,9 @@ export function MemberProfileDialog() {
       <DialogTitle sx={titleBar}>
         <Typography variant="h6">Member Profile</Typography>
         <IconButton size="small" onClick={handleClose}>
-          <Close />
+          <Box component="svg" sx={{ width: 24, height: 24 }} viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </Box>
         </IconButton>
       </DialogTitle>
       <DialogContent>
