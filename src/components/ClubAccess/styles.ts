@@ -1,95 +1,128 @@
-import type { SxProps, Theme } from '@mui/material/styles';
+import type { SxProps, Theme } from "@mui/material/styles";
 
 export const root: SxProps<Theme> = {
-	flex: 1,
-	p: 3,
-	display: 'flex',
-	flexDirection: 'column',
-	minHeight: 0,
+  flex: 1,
+  p: 3,
+  display: "flex",
+  flexDirection: "column",
+  minHeight: 0,
+  bgcolor: "#C7DBE540",
+  width: "900px",
+};
+
+export const headerText: SxProps<Theme> = {
+  fontSize: "20px",
+  fontWeight: 700,
+  color: "primary.dark",
+  bgcolor: "white",
+  px: "24px",
+  borderTopLeftRadius: "12px",
+  borderTopRightRadius: "12px",
 };
 
 export const headerRow: SxProps<Theme> = {
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'space-between',
-	mb: 2,
-	flexWrap: 'wrap',
-	gap: 2,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  flexWrap: "wrap",
+  gap: 2,
 };
 
 export const headerActions: SxProps<Theme> = {
-	display: 'flex',
-	alignItems: 'center',
-	gap: 2,
+  display: "flex",
+  alignItems: "center",
+  gap: 2,
 };
 
 export const tabsWrapper: SxProps<Theme> = {
-	width: '100%',
-	bgcolor: '#fff',
-	p: 2,
-	borderRadius: '24px',
-	mb: 2,
+  width: "100%",
+  borderTopLeftRadius: 0,
+  borderBottomLeftRadius: 0,
+};
+
+export const contentPaper: SxProps<Theme> = {
+  bgcolor: "#ffff",
+  borderBottomLeftRadius: "20px",
+  borderBottomRightRadius: "20px",
+  borderTopRightRadius: 0,
+  borderTopLeftRadius: 0,
+  px: 2,
+  py: 1,
+  overflow: "hidden",
 };
 
 export const tabsPaper: SxProps<Theme> = {
-	bgcolor: '#f6fbff',
-	borderRadius: '40px',
-	px: 2,
-	py: 1,
-	overflow: 'hidden',
+  borderRadius: 0,
+  px: 0,
+  overflow: "hidden",
 };
 
 export const tabs: SxProps<Theme> = {
-	minHeight: 48,
-	'& .MuiTabs-flexContainer': {
-		gap: 1,
-	},
+  minHeight: 48,
+  "& .MuiTabs-flexContainer": {
+    gap: 1,
+  },
 };
 
 export const tab = (selected: boolean): SxProps<Theme> => ({
-	textTransform: 'none',
-	fontWeight: 600,
-	minHeight: 40,
-	minWidth: 90,
-	borderRadius: '999px',
-	bgcolor: selected ? '#e6f2ff' : '#fff',
-	color: '#344054',
-	px: 3,
-	transition: 'all 0.25s ease',
-	'&:hover': {
-		bgcolor: '#eef6ff',
-	},
+  fontSize: "18px",
+  textTransform: "none",
+  fontWeight: 500,
+  minHeight: "45px",
+  minWidth: "91px",
+  border: "1px solid #DEECF0",
+  borderBottom: selected ? "0px" : "",
+  borderTopLeftRadius: selected ? "10px" : "999px",
+  borderBottomLeftRadius: selected ? "0px" : "999px",
+  borderBottomRightRadius: selected ? "0px" : "999px",
+  borderTopRightRadius: selected ? "10px" : "999px",
+  mt: 1,
+  mb: selected ? 0 : 1,
+  background: selected
+    ? "linear-gradient(90deg, #DDEBEF 0%, #FFFFFF 100%)"
+    : "#fff",
+  color: "#344054",
+  padding: "9px 16px",
+  "&:hover": {
+    background: selected
+      ? "linear-gradient(90deg, #DDEBEF 0%, #FFFFFF 100%)"
+      : "#eef6ff",
+  },
 });
 
 export const searchField: SxProps<Theme> = {
-	mb: 2,
-	maxWidth: 360,
-	'& .MuiOutlinedInput-root': { borderRadius: 2 },
+  mt: 2,
+  mb: 2,
+  "& .MuiOutlinedInput-root": {
+    borderRadius: "12px",
+    height: "30px",
+    width: "750px",
+  },
 };
 
 export const searchIcon: SxProps<Theme> = {
-	width: 20,
-	height: 20,
+  width: 15,
+  height: 15,
 };
 
 export const tablePaper: SxProps<Theme> = {
-	flex: 1,
-	minHeight: 0,
-	display: 'flex',
-	flexDirection: 'column',
-	borderRadius: 2,
-	boxShadow: 1,
+  flex: 1,
+  minHeight: 0,
+  display: "flex",
+  flexDirection: "column",
+  borderRadius: 2,
+  boxShadow: 1,
 };
 
 export const tableContainer: SxProps<Theme> = {
-	flex: 1,
-	overflow: 'auto',
+  flex: 1,
+  overflow: "auto",
 };
 
 export const tableRow: SxProps<Theme> = {
-	cursor: 'pointer',
+  cursor: "pointer",
 };
 
 export const statusChip: SxProps<Theme> = {
-	fontWeight: 600,
+  fontWeight: 600,
 };
